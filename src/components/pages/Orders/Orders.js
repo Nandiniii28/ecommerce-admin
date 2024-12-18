@@ -130,7 +130,7 @@ export default function Orders() {
                   </ul>
                 </div>
                 <button className="btn filter-btn me-2 mt-2" onClick={filterhandle}>Filters</button>
-                <button className='btn border bg-white me-2 mt-2 rounded'><i class="bi bi-plus"></i> Create</button>
+                <Link to='/createorder' className='btn border bg-white me-2 mt-2 rounded'><i class="bi bi-plus"></i> Create</Link>
                 <div class="btn-group me-2 mt-2">
                   <button type="button" class="btn border rounded dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-download"></i> Export <i className='bi bi-chevron-down'></i>

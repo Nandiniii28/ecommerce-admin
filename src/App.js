@@ -13,6 +13,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import RecentPost from "./components/pages/RecentPost";
 import Reports from "./components/pages/Reports";
 import EditOrder from "./components/pages/Orders/EditOrder";
+import CreateOrder from "./components/pages/CreateOrder";
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const toggleSidebar = () => {
@@ -50,6 +51,7 @@ function App() {
               <Route path="/recent-post" element={<RecentPost />} />
               <Route path="/reports" element={<Reports />} />
               <Route path="/editorder" element={<EditOrder />} />
+              <Route path="/createorder" element={<CreateOrder />} />
             </Routes>
           </main>
         </div>
