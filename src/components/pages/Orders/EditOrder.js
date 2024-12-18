@@ -6,7 +6,7 @@ export default function EditOrder() {
         <>
             <div className='container editorder-section'>
                 <div className='row'>
-                    <div className='col-md-8'>
+                    <div className='col-md-8 mb-3'>
                         <div className='card'>
                             <div className='p-4 pb-0'>
                                 <div className='card-title d-flex justify-content-between'>

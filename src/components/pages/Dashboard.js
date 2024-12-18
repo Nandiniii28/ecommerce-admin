@@ -143,24 +143,24 @@ export default function Dashboard() {
     productNames: ["TV", "Sports", "Furniture", "Home appliance", "Yoga", "Makeup"],
     options: {
       chart: {
-        width: 380,
-        type: 'donut',
+        width: "100%",
+        type: "donut",
       },
       plotOptions: {
         pie: {
           startAngle: -90,
           endAngle: 270,
           donut: {
-            size: '75%',
+            size: "75%",
             labels: {
               show: true,
               total: {
                 show: true,
-                label: 'Products',
+                label: "Products",
                 style: {
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                  color: '#333',
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  color: "#333",
                 },
                 formatter: function (w) {
                   const total = w.globals.seriesTotals.reduce((a, b) => a + b, 0);
@@ -175,27 +175,83 @@ export default function Dashboard() {
         enabled: false,
       },
       fill: {
-        type: 'gradient',
+        type: "gradient",
       },
       legend: {
         show: false,
       },
       title: {
-        text: '',
+        text: "",
       },
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 1024, // Tablet
+          options: {
+            chart: {
+              width: 300,
+            },
+            plotOptions: {
+              pie: {
+                donut: {
+                  size: "65%",
+                },
+              },
+            },
+          },
+        },
+        {
+          breakpoint: 768, // Mobile
+          options: {
+            chart: {
+              width: 250,
+            },
+            plotOptions: {
+              pie: {
+                donut: {
+                  size: "55%",
+                },
+              },
+            },
+          },
+        },
+        {
+          breakpoint: 480, // Smaller mobile
           options: {
             chart: {
               width: 200,
+            },
+            plotOptions: {
+              pie: {
+                donut: {
+                  size: "50%",
+                },
+              },
+            },
+          },
+        },
+        {
+          breakpoint: 400, // Smallest mobile
+          options: {
+            chart: {
+              width: 100,
+            },
+            plotOptions: {
+              pie: {
+                donut: {
+                  size: "20%",
+                },
+              },
+            },
+            tooltip: {
+              style: {
+                fontSize: "10px",
+              },
             },
           },
         },
       ],
       tooltip: {
         custom: function ({ series, seriesIndex, w }) {
-          // Tooltip customization to show product names
           return `<div style="padding: 10px; text-align: center; font-size: 12px;">
                     <strong>${state.productNames[seriesIndex]}</strong>
                     <br />
@@ -206,11 +262,12 @@ export default function Dashboard() {
     },
   });
 
+
   return (
     <>
       <div className="container dashboard-section">
         <div className="row">
-          <div className='col-lg-3 col-sm-6'>
+          <div className='col-lg-3 col-sm-6 mb-3'>
             <div class="card order-revenue dashboard-card h-100">
               <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
@@ -228,7 +285,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-3 col-sm-6 mb-3">
             <div class="card produts-quantity dashboard-card h-100 border-bottom-0">
               <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
@@ -245,7 +302,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-3 col-sm-6 mb-3">
             <div class="card dashboard-card customers-card border-bottom-0 h-100">
               <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
@@ -262,7 +319,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-3 col-sm-6 mb-3">
             <div class="card dashboard-card review-card border-bottom-0 h-100">
               <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
@@ -281,7 +338,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="row mt-3">
-          <div className='col-md-6'>
+          <div className='col-md-6 mb-3'>
             <div className="chart-container p-4" style={{ textAlign: "left" }}>
               <p style={{ margin: "0", color: "#666", fontSize: "14px", fontWeight: "bold" }}>Profit</p>
               <p style={{ margin: "0", color: "#999", fontSize: "12px" }}>Last Month</p>
@@ -290,7 +347,7 @@ export default function Dashboard() {
               <p style={{ margin: "0", fontSize: "14px", color: "#4CAF50" }}>+8.24%</p>
             </div>
           </div>
-          <div className='col-md-6'>
+          <div className='col-md-6 mb-3'>
             <div className="chart-container p-4" style={{ textAlign: "left" }}>
               <p style={{ margin: "0", color: "#666", fontSize: "14px", fontWeight: "bold" }}>Customers</p>
               <p style={{ margin: "0", color: "#999", fontSize: "12px" }}>Last Month</p>
@@ -309,7 +366,7 @@ export default function Dashboard() {
         </div>
         <div className='card mt-3'>
           <div className='row  p-4 mx-1'>
-            <div className='col-md-6'>
+            <div className='col-md-6 mb-3'>
               <div className='border-0 bg-white'>
                 <p style={{ marginBottom: "0", color: "#000", fontSize: "20px", fontWeight: "bold" }}>Generated Leads</p>
                 <p style={{ marginBottom: "0", color: "#8d8a94", fontSize: "14px" }}>Monthly Report</p>
@@ -317,9 +374,9 @@ export default function Dashboard() {
                 <p style={{ margin: "0", fontSize: "14px", color: "#4CAF50" }}>+8.24%</p>
               </div>
             </div>
-            <div className='col-md-6'>
-              <div id="chart" style={{ width: "max-content", float:"inline-end" }}>
-                <ReactApexChart options={state.options} series={state.series} type="donut" width={200} />
+            <div className='col-md-6 mb-3'>
+              <div id="donut_chart">
+                <ReactApexChart options={state.options} series={state.series} type="donut" />
               </div>
             </div>
           </div>

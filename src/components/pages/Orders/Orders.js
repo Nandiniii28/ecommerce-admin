@@ -106,36 +106,45 @@ export default function Orders() {
 
         <div className='card p-4 '>
           <h5 className="card-title">Orders </h5>
-          <div className="row mb-3">
-            <div className='col-md-4 d-flex'>
-              <Dropdown>
-                <Dropdown.Toggle variant="primary" id="bulk-actions">
-                  Bulk Actions
-                </Dropdown.Toggle>
+          <div className='row'>
+            <div className='col-md-8 col-sm-6 col-xs-12'>
+              <div className=' mb-3' style={{ width: "fit-content" }}>
+                <div class="btn-group me-2 mt-2">
+                  <button type="button" class="btn border rounded dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Bulk Actions
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                      <div class="dropdown">
+                        <li class="">Bulk Changes &raquo;</li>
+                        <div class="dropdown-content">
+                          <a href="#">Create at</a>
+                          <a href="#">Name</a>
+                          <a href="#">Status</a>
+                        </div>
+                      </div>
 
-                <Dropdown.Menu>
-                  <Dropdown drop="end" as="div" style={{ cursor: "pointer" }}>
-                    <Dropdown.Toggle as="span" className="dropdown-item">
-                      Bulk changes &raquo;
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item>Created At</Dropdown.Item>
-                      <Dropdown.Item>Status</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                  <Dropdown.Divider />
-                  <Dropdown.Item>Delete</Dropdown.Item>
-
-                </Dropdown.Menu>
-              </Dropdown>
-              <div className='filter-btn ms-3'>
-                <button className="btn filter-btn me-2" onClick={filterhandle}>Filters</button>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li class="dropdown-item">Delete</li>
+                  </ul>
+                </div>
+                <button className="btn filter-btn me-2 mt-2" onClick={filterhandle}>Filters</button>
+                <button className='btn border bg-white me-2 mt-2 rounded'><i class="bi bi-plus"></i> Create</button>
+                <div class="btn-group me-2 mt-2">
+                  <button type="button" class="btn border rounded dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-download"></i> Export <i className='bi bi-chevron-down'></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item"><i className='bi bi-filetype-csv'></i> CSV</li>
+                    <li class="dropdown-item"><i className='bi bi-filetype-xls'></i>Excel</li>
+                  </ul>
+                </div>
+                <button className='btn border bg-white me-2 mt-2 rounded'><i class="bi bi-arrow-clockwise"></i> Reload</button>
               </div>
             </div>
-
-            {/* Filters Search Bar */}
-            <div className='col-md-3'>
-              <div className="input-group" style={{ maxWidth: "300px" }}>
+            <div className='col-md-4 mt-2 mb-3'>
+              <div className="input-group">
                 <input
                   type="text"
                   className="form-control"
@@ -143,23 +152,6 @@ export default function Orders() {
                   aria-label="Search"
                 />
               </div>
-            </div>
-
-
-            {/* Create and Export Buttons */}
-            <div className='col-md-5 d-flex gap-2'>
-              <button className="btn btn-primary me-2"><i class="bi bi-plus"></i> Create</button>
-              <Dropdown>
-                <Dropdown.Toggle className='btn exportBtn' drop="end" as="div" style={{ cursor: "pointer" }} variant="primary">
-                  <i class="bi bi-plus"></i>Export
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item><i class="bi bi-filetype-csv"></i> CSV</Dropdown.Item>
-                  <Dropdown.Item><i class="bi bi-filetype-xls"></i> Excel</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <button className="btn reloadBtn"><i class="bi bi-arrow-clockwise"></i> Reload</button>
             </div>
           </div>
           <div class="table-responsive text-nowrap">
