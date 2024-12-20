@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
-import Products from "./components/pages/Products";
+import Products from "./components/pages/Product/Products";
 import Orders from "./components/pages/Orders/Orders";
 import Customers from "./components/pages/Customers";
 import Sidebar from "./components/Sidebar";
@@ -14,6 +14,7 @@ import RecentPost from "./components/pages/RecentPost";
 import Reports from "./components/pages/Reports";
 import EditOrder from "./components/pages/Orders/EditOrder";
 import CreateOrder from "./components/pages/CreateOrder";
+import ProductList from "./components/pages/Product/ProductList";
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const toggleSidebar = () => {
@@ -52,6 +53,7 @@ function App() {
               <Route path="/reports" element={<Reports />} />
               <Route path="/editorder" element={<EditOrder />} />
               <Route path="/createorder" element={<CreateOrder />} />
+              <Route path="/productslist" element={<ProductList />} />
             </Routes>
           </main>
         </div>
